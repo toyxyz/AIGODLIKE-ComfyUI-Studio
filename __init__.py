@@ -1,5 +1,6 @@
 import json
 import sys
+import os
 from os import PathLike
 from aiohttp.web_urldispatcher import AbstractRoute, UrlDispatcher
 import server
@@ -358,7 +359,8 @@ async def fetch_config(request: web.Request):
         "tags": [],
         "creationTime": 1703733395793,
         "modifyTime": 1703733395793,
-        "size": 0
+        "size": 0,
+        "display": "display"
     }
     old_model_map = CFG_MANAGER.get_detail(mtype)
     ret_model_map = {}
@@ -386,6 +388,7 @@ async def fetch_config(request: web.Request):
         mcfg["size"] = model_path.stat().st_size / 1024**2  # MB
         mcfg["creationTime"] = model_path.stat().st_ctime * 1000
         mcfg["modifyTime"] = model_path.stat().st_mtime * 1000
+        mcfg["display"] = os.path.split(mcfg["name"])[1]
     ret_model_map = deepcopy(ret_model_map)
     # model_paths = ModelManager.get_paths(mtype)
     for mcfg in ret_model_map.values():
