@@ -388,7 +388,7 @@ async def fetch_config(request: web.Request):
         mcfg["size"] = model_path.stat().st_size / 1024**2  # MB
         mcfg["creationTime"] = model_path.stat().st_ctime * 1000
         mcfg["modifyTime"] = model_path.stat().st_mtime * 1000
-        mcfg["display"] = os.path.split(mcfg["name"])[1]
+        mcfg["display"] = os.path.splitext(os.path.split(mcfg["name"])[1])[0]
     ret_model_map = deepcopy(ret_model_map)
     # model_paths = ModelManager.get_paths(mtype)
     for mcfg in ret_model_map.values():
