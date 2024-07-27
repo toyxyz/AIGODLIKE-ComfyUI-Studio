@@ -32,7 +32,6 @@ export default {
                           <div class="level" :style="{'background':levelInf(item.level)}">{{item.level}}</div>
                           <div class="text_des">
                               <p :title="item.name">{{item.name}}</p>
-                              <p :title="item.type">{{item.type}}</p>
                           </div>
                       </div> 
                   </div>
