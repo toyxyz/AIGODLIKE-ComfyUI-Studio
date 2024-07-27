@@ -42,7 +42,7 @@ export default {
     },
   },
   mounted() {
-    const language = localStorage.getItem("language") || "cn";
+    const language = localStorage.getItem("language") || "en";
     this.columnIndex = JSON.parse(localStorage.getItem("columnIndex"));
     if (typeof this.columnIndex !== "number") {
       this.columnIndex = 3;
