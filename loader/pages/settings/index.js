@@ -6,7 +6,6 @@ import windowing from "../../components/settings/windowing/index.js";
 export default {
   name: "Settings",
   components: {
-    Language,
     Shortcut,
     ModelShield,
     windowing,
