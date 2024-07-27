@@ -31,7 +31,7 @@ export default {
                       <div class="model_des" :style="{'--height':6 / column * 3 + 'vw'}">
                           <div class="level" :style="{'background':levelInf(item.level)}">{{item.level}}</div>
                           <div class="text_des">
-                              <p :title="item.name">{{item.name}}</p>
+                              <p :title="item.display">{{item.display}}</p>
                           </div>
                       </div> 
                   </div>
