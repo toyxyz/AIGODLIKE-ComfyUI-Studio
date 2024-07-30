@@ -4,6 +4,8 @@ Prevent vertically long thumbnails from being cut off
 
 Add editable notes to model information. You can write trigger words or cautions for LORA. 
 
+The notes are stored in 'ComfyUI/custom_nodes/AIGODLIKE-ComfyUI-Studio/model-config.json'. Back them up as needed. 
+
 ![image](https://github.com/user-attachments/assets/133291f6-3e35-40ba-bca1-bfb5b560de8b)
 
 Modify the name of the model to be more visible 
