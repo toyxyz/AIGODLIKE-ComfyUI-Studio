@@ -318,6 +318,16 @@ def find_rel_path(p, model_paths) -> str:
     return ""
 
 
+def find_memo(string: str) -> [str]:
+    """
+    find memo from string
+    """
+    if not string:
+        return []
+    if string :
+        return string
+    return []
+    
 def find_tags(string: str, sep="/") -> list[str]:
     """
     find tags from string use the sep for split
@@ -360,7 +370,8 @@ async def fetch_config(request: web.Request):
         "creationTime": 1703733395793,
         "modifyTime": 1703733395793,
         "size": 0,
-        "display": "display"
+        "display": "display",
+        "memo": "text"
     }
     old_model_map = CFG_MANAGER.get_detail(mtype)
     ret_model_map = {}
@@ -389,6 +400,13 @@ async def fetch_config(request: web.Request):
         mcfg["creationTime"] = model_path.stat().st_ctime * 1000
         mcfg["modifyTime"] = model_path.stat().st_mtime * 1000
         mcfg["display"] = os.path.splitext(os.path.split(mcfg["name"])[1])[0]
+    
+    for memo in models:
+        
+        dir_memo = find_memo(memo)
+        if dir_memo:
+            mcfg["memo"] = dir_memo
+    
     ret_model_map = deepcopy(ret_model_map)
     # model_paths = ModelManager.get_paths(mtype)
     for mcfg in ret_model_map.values():
@@ -406,6 +424,7 @@ async def fetch_config(request: web.Request):
             mcfg["tags"].extend(dir_tags)
             mcfg["dir_tags"] = dir_tags
         mcfg["cover"] = urllib.parse.quote(path_to_url(mcfg["cover"]))
+        
         if not mcfg["cover"]:
             continue
         mcfg["cover"] += f"?t={time.time()}"

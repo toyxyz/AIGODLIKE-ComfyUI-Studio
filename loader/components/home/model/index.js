@@ -99,18 +99,18 @@ export default {
     },
     // Change name
     modifyName(model, value) {
-      let old_data = model.name;
-      model.name = value;
+      let old_data = model.memo;
+      model.memo = value;
       async function cb(resp) {
         if (resp.status === 200) {
           let json = await resp.json();
           if (!json.hasOwnProperty("status") || !json.status) {
-            model.name = old_data;
+            model.meo = old_data;
             alert("修改失败");
           }
         }
       }
-      update_config(model, "name", old_data, cb);
+      update_config(model, "memo", old_data, cb);
     },
     // Change level
     changeLevel(level) {

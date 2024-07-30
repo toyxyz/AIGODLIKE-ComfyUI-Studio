@@ -2,6 +2,7 @@ import { getLevelInf } from "../../../../static/js/public.js";
 import { api } from "/scripts/api.js";
 import BasicInf from "./basicInf/index.js";
 import Workflow from "./workflow/index.js";
+import Memo from "./memo/index.js";
 import IconRenderer from "../../../public/iconRenderer.js";
 const ext = {
   is_rendering: false,
@@ -21,6 +22,7 @@ export default {
   components: {
     BasicInf,
     Workflow,
+	Memo
   },
   data() {
     return {
@@ -151,10 +153,8 @@ export default {
                   <input type="file" id="file_input" accept="image/*" @change="inputCover($event)" />
                 </div>
               </div>
-              <div v-if="isReadonly" class="model_name" @click="editName" title="点击修改"><p>{{model.name}}</p></div>
-              <div v-else class="name_input">
-                <input ref="nameInput" type="value" :value="model.name" @blur="blurInput"  @keydown="nameInputKeyDown"/>
-                <span @mousedown="changeName($event)"><em class="iconfont icon-edit"></em></span> 
+              <div  class="model_name">
+				{{$t(model.name)}}
               </div>
               <div class="level_group">
                 <span v-for="(item, index) in levelList" :key="index" class="level_item" :class="{selected:selectedLevel === item.value}" :style="{'--color':item.color}" @click="changeLevel(item)">{{item.value}}</span>
@@ -162,7 +162,13 @@ export default {
               <div class="menu_tab">
                 <div v-for="(item,index) in $t('home.modelDetail.menuTab')" :key="index" class="menu_item" :class="{'active_menu': index === menuIndex }" @click="changeMenu(index)">{{item.name}}</div>
               </div>
-              <Workflow v-if="menuIndex === 0" :model="model" />
+			  <div v-if="isReadonly" class="model_name" @click="editName" title="Click to modify"><p>{{"Edit Memo"}}</p></div>
+              <div v-else class="name_input">
+                <input ref="nameInput" type="value" :value="model.memo" @blur="blurInput"  @keydown="nameInputKeyDown"/>
+                <span @mousedown="changeName($event)"><em class="iconfont icon-edit"></em></span> 
+              </div>
+			  <Memo v-if="menuIndex === 0" :model="model" />
+			  <Workflow v-if="menuIndex === 0" :model="model" />
               <BasicInf v-else  @addTag="addTag" @deleteTag="deleteTag" :model="model" />
               <button class="use_button" @click="useModel">{{$t("home.modelDetail.useButtonText")}}</button>
           </div>
