@@ -1,3 +1,16 @@
+Prevent vertically long thumbnails from being cut off
+
+![image](https://github.com/user-attachments/assets/cbc0874b-a4c1-4645-a71f-cef19e8d7094)
+
+Add editable notes to model information. You can write trigger words or cautions for LORA. 
+
+![image](https://github.com/user-attachments/assets/133291f6-3e35-40ba-bca1-bfb5b560de8b)
+
+Modify the name of the model to be more visible 
+
+![image](https://github.com/user-attachments/assets/5489975e-d420-4537-aea1-94a355e723c4)
+
+============================================================================================================================================
 C# AIGODLIKE-ComfyUI-Studio
 Improve the interactive experience of using ComfyUI, such as making the loading of ComfyUI models more intuitive and making it easier to create model thumbnails
 ![image](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Studio/assets/116185401/8c66b314-0447-4ae9-964b-d9043e8e0690)
